@@ -17,4 +17,5 @@ Current functions:
 ### Expected output
 An interactive table in which user can filter each column, search and download the selected metadata table. 
 
+(to be updated: 1 table per bucket? search across tables/buckets?...)
 ![alt text](image.png)
