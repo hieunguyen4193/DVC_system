@@ -28,7 +28,7 @@ def create_bucket(bucket_name, minio_credentials, versioning = True):
         endpoint = "localhost:9000", # must use API port, not the original port
         access_key = keys["accessKey"],
         secret_key = keys["secretKey"],
-        secure = False # FIX ME PLEASE!!! WHAT IS THE BEST WAY TO HANDLE THIS SECURITY ISSUE?  
+        secure = False # FIX ME HIEU!!! WHAT IS THE BEST WAY TO HANDLE THIS SECURITY ISSUE?  
     )
     try:
         # Check if the bucket already exists
