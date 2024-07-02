@@ -130,6 +130,7 @@ def extract_metadata_of_all_objects(bucket_name, minio_credentials, simplified =
         metadatadf = pd.DataFrame.from_dict(metadata_dict, orient = "index").reset_index()
         if simplified == True:
             metadatadf = metadatadf[["index", "x-amz-version-id"] + [item for item in metadatadf.columns if "x-amz-meta-" in item]]
+            metadatadf.columns = [item.replace("x-amz-meta-", "") for item in metadatadf.columns]
         return metadatadf
     except S3Error as e:
         print(f"Error extracting metadata: {e}")

@@ -14,7 +14,6 @@ def parse_arguments():
 
 from flask import Flask, render_template_string
 import pandas as pd
-
 def render_interactive_table(df):
     html_table = df.to_html(classes='table table-striped table-bordered', index=False, border=0)
     html_template = """
@@ -86,9 +85,9 @@ app = Flask(__name__)
 def index():
     # bucket_name = "dev"
     # minio_credentials = "credentials_python_minio.json"
-    metadata_dict = extract_metadata_of_all_objects(bucket_name = bucket_name, 
-                                                    minio_credentials = minio_credentials)
-    metadatadf = pd.DataFrame.from_dict(metadata_dict, orient = "index").reset_index()
+    metadatadf = extract_metadata_of_all_objects(bucket_name = bucket_name, 
+                                                 minio_credentials = minio_credentials, 
+                                                 simplified = True)
     return render_interactive_table(metadatadf)
 
 if __name__ == '__main__':
