@@ -135,3 +135,31 @@ def extract_metadata_of_all_objects(bucket_name, minio_credentials, simplified =
     except S3Error as e:
         print(f"Error extracting metadata: {e}")
         return {}
+
+#####-------------------------------------------------------------#####
+# Search across different buckets in the minio server
+#####-------------------------------------------------------------#####
+def search_across_buckets(search_criteria, minio_credentials):
+    # Load MinIO credentials
+    with open(minio_credentials, 'r') as file:
+        keys = json.load(file)
+    
+    # Initialize MinIO client
+    minio_client = minio.Minio(
+        keys['endpoint'],
+        access_key=keys['access_key'],
+        secret_key=keys['secret_key'],
+        secure=keys['secure']
+    )
+    
+    # List all buckets
+    buckets = minio_client.list_buckets()
+    
+    # Initialize a dictionary to hold search results
+    search_results = {}
+    
+    # Iterate through each bucket
+    for bucket in buckets:
+        bucket_name = bucket.name
+        # List or search objects in the bucket
+        # >>> TO ADD: list and search data by metadata of the bucket?
