@@ -6,6 +6,8 @@ Make use of `minio` object-storage to generate a database with customizable meta
 ## Getting Started
 Conda env, install with yml file in the repo.
 
+The file `credentials_python_minio.json` is dummy credentials, it works only in my local server.
+
 ### Usage
 Current functions:
 - `create_bucket`: create a bucket in the minio server. Provide credentials and bucket name. 
