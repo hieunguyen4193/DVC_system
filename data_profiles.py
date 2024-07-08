@@ -2,7 +2,7 @@ DATA_PROFILES = {
     ##########################################################################
     ###### WGBS BAM FILE (BAM file with methylation information)
     ##########################################################################
-    "WGBSbam" : {
+    "wgbsbam" : {
         "properties": {
             "Labcode": {
                 "type": "text"
@@ -34,6 +34,12 @@ DATA_PROFILES = {
             "ref_genome": {
                 "type": "text"
             },
+            "depth": {
+                "type": "text"
+            },
+            "cancer_label": {
+                "type": "text"
+            }, 
             "bucket": {
                 "type": "text"
             }
@@ -42,7 +48,7 @@ DATA_PROFILES = {
     ##########################################################################
     ###### COV file from BISMARK METHYLATION EXTRACTOR
     ##########################################################################
-    "bismarkCOV": {
+    "bismarkcov": {
         "properties": {
             "Labcode": {
                 "type": "text"
@@ -77,6 +83,9 @@ DATA_PROFILES = {
             "filterDepth": {
                 "type": "text"
             },
+            "cancer_label": {
+                "type": "text"
+            }, 
             "bucket": {
                 "type": "text"
             }
@@ -85,7 +94,7 @@ DATA_PROFILES = {
     ##########################################################################
     ###### COV file from BISMARK METHYLATION EXTRACTOR
     ##########################################################################
-    "WGSbam" : {
+    "wgsbam" : {
         "properties": {
             "Labcode": {
                 "type": "text"
@@ -114,6 +123,12 @@ DATA_PROFILES = {
             "ref_genome": {
                 "type": "text"
             },
+            "depth": {
+                "type": "text"
+            },
+            "cancer_label": {
+                "type": "text"
+            }, 
             "bucket": {
                 "type": "text"
             }
@@ -122,7 +137,7 @@ DATA_PROFILES = {
     ##########################################################################
     ###### COV file from BISMARK METHYLATION EXTRACTOR
     ##########################################################################
-    "FASTQ" : {
+    "fastq" : {
         "properties": {
             "Labcode": {
                 "type": "text"
@@ -142,9 +157,80 @@ DATA_PROFILES = {
             "readlen": {
                 "type": "integer"
             },
+            "cancer_label": {
+                "type": "text"
+            }, 
             "withUMI": {
                 "type": "text"
+            }
+        }
+    },
+    ##########################################################################
+    ###### tabular feature file, single column, 1 column = 1 sample, rows = features
+    ##########################################################################
+    "csvfeature" : {
+        "properties": {
+            "Labcode": {
+                "type": "text"
             },
+            "SequencingID": {
+                "type": "text"
+            }, 
+            "FileName": {
+                "type": "text"
+            },
+            "FileType": {
+                "type": "text"
+            },
+            "Date": {
+                "type": "date"
+            },
+            "featureName": {
+                "type": "text"
+            },
+            "project": {
+                "type": "text"
+            },
+            "cancer_label": {
+                "type": "text"
+            }, 
+            "sub_project": {
+                "type": "text"
+            }
+        }
+    },
+    ##########################################################################
+    ###### .rds Robject feature file, single sample
+    ##########################################################################
+    "rdsfeature" : {
+        "properties": {
+            "Labcode": {
+                "type": "text"
+            },
+            "SequencingID": {
+                "type": "text"
+            }, 
+            "FileName": {
+                "type": "text"
+            },
+            "FileType": {
+                "type": "text"
+            },
+            "Date": {
+                "type": "date"
+            },
+            "featureName": {
+                "type": "text"
+            },
+            "project": {
+                "type": "text"
+            },
+            "cancer_label": {
+                "type": "text"
+            }, 
+            "sub_project": {
+                "type": "text"
+            }
         }
     }
 }
