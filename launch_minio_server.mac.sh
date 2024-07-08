@@ -1,6 +1,6 @@
 export MINIO_CONFIG_ENV_FILE=./minio.config
 # export MINIO_CONFIG_ENV_FILE=./minio.config.mb
-minio server --console-address :9411
+minio server --console-address :9001
 
 # sudo lsof -i :5955
 # sudo kill -9 PID

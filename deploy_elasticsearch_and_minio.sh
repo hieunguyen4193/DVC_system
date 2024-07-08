@@ -1,3 +1,7 @@
+# free the port before deploy new servers
+# sudo lsof -i :5955
+# sudo kill -9 PID
+
 docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 docker network rm elastic-net
@@ -10,6 +14,7 @@ docker run -p 127.0.0.1:9200:9200 -d --name elasticsearch --network elastic-net 
   -e "discovery.type=single-node" \
   -e "xpack.security.http.ssl.enabled=false" \
   -e "xpack.license.self_generated.type=trial" \
+  -v /Volumes/HNSD02/elasticsearch-data:/usr/share/elasticsearch/data \
   docker.elastic.co/elasticsearch/elasticsearch:8.14.2
 
 sleep 30
@@ -32,4 +37,8 @@ docker run -p 127.0.0.1:5601:5601 -d --name kibana --network elastic-net \
 
 
 ##### launch minio sever
-bash launch_minio_server.mac.sh
+export MINIO_ROOT_USER=hieunguyen
+export MINIO_ROOT_PASSWORD=genov4.cool
+export MINIO_VOLUMES="/Volumes/HNSD02/minio"
+# Start MinIO server
+minio server --console-address :9412 --address :9411
