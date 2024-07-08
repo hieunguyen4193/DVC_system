@@ -1,6 +1,6 @@
-# docker stop $(docker ps -aq)
-# docker rm $(docker ps -aq)
-# docker network rm elastic-net
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+docker network rm elastic-net
 export ELASTIC_PASSWORD="genov4" 
 export KIBANA_PASSWORD="genov4.cool"
 

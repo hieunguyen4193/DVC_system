@@ -22,5 +22,59 @@
                 }
             }
         }
+    },
+    {
+        "dev1": {
+            "properties": {
+                "Labcode": {
+                    "type": "text"
+                },
+                "SequencingID": {
+                    "type": "text"
+                },
+                "FileName": {
+                    "type": "text"
+                },
+                "FileType": {
+                    "type": "text"
+                },
+                "Date": {
+                    "type": "date"
+                },
+                "pipeline": {
+                    "type": "text"
+                }
+            }
+        }
+    },
+    {
+        "dev2": {
+            "properties": {
+                "Labcode": {
+                    "type": "text"
+                },
+                "SequencingID": {
+                    "type": "text"
+                },
+                "FileName": {
+                    "type": "text"
+                },
+                "FileType": {
+                    "type": "text"
+                },
+                "Date": {
+                    "type": "date"
+                },
+                "pipeline": {
+                    "type": "text"
+                },
+                "project": {
+                    "type": "text"
+                },
+                "sub_project": {
+                    "type": "text"
+                }
+            }
+        }
     }
 ]
