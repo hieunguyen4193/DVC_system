@@ -37,10 +37,11 @@ class DataProfileDB:
         del self.data[id_to_delete]
         self.save_database()
 
-# Example usage
 db = DataProfileDB("ALL_DATA_PROFILES.json")
 
-##### DATA PROFILE FOR BAM FILES #####
+#####---------------------------------------------------------------#####
+##### DATA PROFILE FOR BAM FILES 
+#####---------------------------------------------------------------#####
 bam_profile = {
     "properties": {
         "Labcode": {
@@ -78,10 +79,12 @@ bam_profile = {
 
 db.create_record(
     record = bam_profile, 
-    record_name = "cov",
+    record_name = "bam",
     overwrite = True)
 
-##### DATA PROFILE FOR COV FILES #####
+#####---------------------------------------------------------------#####
+##### DATA PROFILE FOR COV FILES 
+#####---------------------------------------------------------------#####
 cov_profile = {
     "properties": {
         "Labcode": {
@@ -123,10 +126,12 @@ cov_profile = {
 
 db.create_record(
     record = cov_profile, 
-    record_name = "vcf",
+    record_name = "cov",
     overwrite = True)
-    
-##### DATA PROFILE FOR COV FILES #####
+        
+#####---------------------------------------------------------------#####
+##### DATA PROFILE FOR COV FILES 
+#####---------------------------------------------------------------#####
 vcf_profile = {
     "properties": {
         "Labcode": {
@@ -167,7 +172,6 @@ vcf_profile = {
         }
     }
 }
-
 
 db.create_record(
     record = vcf_profile, 
