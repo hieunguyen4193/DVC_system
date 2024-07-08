@@ -1,0 +1,23 @@
+[
+    {
+        "dev": {
+            "properties": {
+                "SampleID": {
+                    "type": "text"
+                },
+                "FileName": {
+                    "type": "text"
+                },
+                "author": {
+                    "type": "text"
+                },
+                "created": {
+                    "type": "date"
+                },
+                "pipeline": {
+                    "type": "keyword"
+                }
+            }
+        }
+    }
+]

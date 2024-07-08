@@ -1,0 +1,26 @@
+[
+    {
+        "dev": {
+            "properties": {
+                "Labcode": {
+                    "type": "text"
+                },
+                "SequencingID": {
+                    "type": "text"
+                },
+                "FileName": {
+                    "type": "text"
+                },
+                "FileType": {
+                    "type": "text"
+                },
+                "Date": {
+                    "type": "date"
+                },
+                "pipeline": {
+                    "type": "text"
+                }
+            }
+        }
+    }
+]
