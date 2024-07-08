@@ -48,48 +48,6 @@ def create_bucket(bucket_name, minio_credentials, versioning = True):
         return False
 
 #####-------------------------------------------------------------#####
-##### create a bucket with a pre-defined and fix template of metadata
-#####-------------------------------------------------------------#####
-def create_bucket_with_metadata_template(bucket_name, minio_credentials, profile, versioning = True):
-    """
-    Create a bucket in MinIO.
-
-    Parameters:
-    - bucket_name (str): The name of the bucket to create.
-    - minio_client (minio.Minio): An instance of the Minio client.
-    - profile: A metadata template. All data in the bucket must follow this metadata template. 
-    The template is written in json format. 
-
-    Returns:
-    - bool: True if the bucket was created successfully, False otherwise.
-    """
-    with open(minio_credentials, 'r') as file:
-        keys = json.load(file)
-        
-    minio_client = minio.Minio(
-        endpoint = "localhost:9000", # must use API port, not the original port
-        access_key = keys["accessKey"],
-        secret_key = keys["secretKey"],
-        secure = False # FIX ME HIEU!!! WHAT IS THE BEST WAY TO HANDLE THIS SECURITY ISSUE?  
-    )
-    try:
-        # Check if the bucket already exists
-        exists = minio_client.bucket_exists(bucket_name)
-        if exists == False: 
-            # Make a new bucket
-            minio_client.make_bucket(bucket_name)
-            print(f"Bucket '{bucket_name}' created successfully.")
-            if versioning:
-                minio_client.set_bucket_versioning(bucket_name, VersioningConfig(ENABLED))
-
-        else:
-            print(f"Bucket '{bucket_name}' already exists.")
-        return True
-    except S3Error as e:
-        print(f"Error creating bucket: {e}")
-        return False
-
-#####-------------------------------------------------------------#####
 ##### Upload file with metadata
 #####-------------------------------------------------------------#####
 def upload_file_with_metadata(bucket_name, 

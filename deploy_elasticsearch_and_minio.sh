@@ -31,5 +31,5 @@ docker run -p 127.0.0.1:5601:5601 -d --name kibana --network elastic-net \
   docker.elastic.co/kibana/kibana:8.14.2
 
 
-  # docker stop $(docker ps -aq)
-  # docker rm $(docker ps -aq)
+##### launch minio sever
+bash launch_minio_server.mac.sh

@@ -40,30 +40,8 @@ class DataProfileDB:
 # Example usage
 db = DataProfileDB("ALL_DATA_PROFILES.json")
 
-data_profile1 = {
-    "properties": {
-        "Labcode": {
-            "type": "text"
-        },
-        "SequencingID": {
-            "type": "text"
-        },
-        "FileName": {
-            "type": "text"
-        },
-        "FileType": {
-            "type": "text"
-        },
-        "Date": {
-            "type": "date"
-        },
-        "pipeline": {
-            "type": "text"
-        }
-    }
-}
-
-data_profile2 = {
+##### DATA PROFILE FOR BAM FILES #####
+bam_profile = {
     "properties": {
         "Labcode": {
             "type": "text"
@@ -88,17 +66,111 @@ data_profile2 = {
         },
         "sub_project": {
             "type": "text"
+        },
+        "ref_genome": {
+            "type": "text"
+        },
+        "bucket": {
+            "type": "text"
         }
     }
 }
 
 db.create_record(
-    record = data_profile1, 
-    record_name = "dev1",
+    record = bam_profile, 
+    record_name = "cov",
     overwrite = True)
 
+##### DATA PROFILE FOR COV FILES #####
+cov_profile = {
+    "properties": {
+        "Labcode": {
+            "type": "text"
+        },
+        "SequencingID": {
+            "type": "text"
+        },
+        "FileName": {
+            "type": "text"
+        },
+        "FileType": {
+            "type": "text"
+        },
+        "Date": {
+            "type": "date"
+        },
+        "pipeline": {
+            "type": "text"
+        },
+        "project": {
+            "type": "text"
+        },
+        "sub_project": {
+            "type": "text"
+        },
+        "ref_genome": {
+            "type": "text"
+        },
+        "methylationCaller": {
+            "type": "text"
+        },
+        "bucket": {
+            "type": "text"
+        }
+    }
+}
+
+
 db.create_record(
-    record = data_profile2, 
-    record_name = "dev2",
+    record = cov_profile, 
+    record_name = "vcf",
+    overwrite = True)
+    
+##### DATA PROFILE FOR COV FILES #####
+vcf_profile = {
+    "properties": {
+        "Labcode": {
+            "type": "text"
+        },
+        "SequencingID": {
+            "type": "text"
+        },
+        "FileName": {
+            "type": "text"
+        },
+        "FileType": {
+            "type": "text"
+        },
+        "Date": {
+            "type": "date"
+        },
+        "pipeline": {
+            "type": "text"
+        },
+        "project": {
+            "type": "text"
+        },
+        "sub_project": {
+            "type": "text"
+        },
+        "ref_genome": {
+            "type": "text"
+        },
+        "variantCaller": {
+            "type": "text"
+        },
+        "variantAnnotation": {
+            "type": "text"
+        },
+        "bucket": {
+            "type": "text"
+        }
+    }
+}
+
+
+db.create_record(
+    record = vcf_profile, 
+    record_name = "vcf",
     overwrite = True)
     

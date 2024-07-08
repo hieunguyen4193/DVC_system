@@ -1,5 +1,5 @@
-# export MINIO_CONFIG_ENV_FILE=./minio.config
-export MINIO_CONFIG_ENV_FILE=./minio.config.mb
+export MINIO_CONFIG_ENV_FILE=./minio.config
+# export MINIO_CONFIG_ENV_FILE=./minio.config.mb
 minio server --console-address :9411
 
 # sudo lsof -i :5955
