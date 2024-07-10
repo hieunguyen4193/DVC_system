@@ -59,7 +59,8 @@ class RDSBucket:
             secure=False 
         )
         self.minio_client = minio_client
-        
+        self.all_current_objects = [item for item in self.minio_client.list_objects(self.bucketName, recursive=True)]
+        self.all_current_object_names = [item.object_name for item in self.all_current_objects]
     def initBucket(self):
         ##### initialize a new bucket
         try:
