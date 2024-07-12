@@ -21,6 +21,17 @@ warnings.filterwarnings("ignore")
 
 import streamlit as st
 
+st.set_page_config(layout="wide")
+
+##### Examples
+# search_query = {
+#   "query": {
+#     "match": {
+#       "Labcode": "ZLBE113NB"
+#     }
+#   }
+# }
+
 #####----------------------------------------------------------------#####
 ##### preprocessing metadata for bam file
 #####----------------------------------------------------------------#####
@@ -37,15 +48,6 @@ os.system("mkdir  -p {}".format(donwloaddir))
 
 ##### genearte the connection to Elasticsearch
 es = ESearch(es_credential = es_credential)
-
-##### define search query
-# search_query = {
-#   "query": {
-#     "match": {
-#       "Labcode": "ZLBE113NB"
-#     }
-#   }
-# }
 
 # Define search index
 search_indices = st.text_input("Enter the index:")
@@ -64,9 +66,19 @@ except json.JSONDecodeError:
 if search_query:
     search_res = es.search(search_indices=search_indices, search_query=search_query)
 
-    # Convert search results to a DataFrame and display
     if search_res.shape[0] != 0:
         st.title("Search Results")
-        st.table(search_res)
+        st.dataframe(search_res)
+
+        # Add download buttons for each row
+        for index, row in search_res.iterrows():
+            file_name = f"result_{index}.json"
+            file_content = row.to_json()
+            st.download_button(
+                label=f"Download row {index}",
+                data=file_content,
+                file_name=file_name,
+                mime="application/json"
+            )
     else:
         st.write("No results found.")
