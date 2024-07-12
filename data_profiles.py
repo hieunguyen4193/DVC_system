@@ -168,7 +168,7 @@ DATA_PROFILES = {
     ##########################################################################
     ###### tabular feature file, single column, 1 column = 1 sample, rows = features
     ##########################################################################
-    "csvfeature" : {
+    "wgsfeature" : {
         "properties": {
             "Labcode": {
                 "type": "text"
@@ -188,47 +188,37 @@ DATA_PROFILES = {
             "featureName": {
                 "type": "text"
             },
-            "project": {
+            "bioinfo_pipeline": {
                 "type": "text"
             },
-            "cancer_label": {
-                "type": "text"
-            }, 
-            "sub_project": {
-                "type": "text"
-            }
-        }
-    },
-    ##########################################################################
-    ###### .rds Robject feature file, single sample
-    ##########################################################################
-    "rdsfeature" : {
-        "properties": {
-            "Labcode": {
+            "bioinfo_pipeline_params": {
                 "type": "text"
             },
-            "SequencingID": {
-                "type": "text"
-            }, 
-            "FileName": {
+            "feature_pipeline": {
                 "type": "text"
             },
-            "FileType": {
-                "type": "text"
-            },
-            "Date": {
-                "type": "date"
-            },
-            "featureName": {
+            "feature_pipeline_params": {
                 "type": "text"
             },
             "project": {
                 "type": "text"
-            },
-            "cancer_label": {
-                "type": "text"
             }, 
             "sub_project": {
+                "type": "text"
+            },
+            "label1": {
+                "type": "text"
+            },
+            "label2": {
+                "type": "text"
+            },
+            "label3": {
+                "type": "text"
+            },            
+            "Note": {
+                "type": "text"
+            },
+            "bucket": {
                 "type": "text"
             }
         }

@@ -8,7 +8,8 @@ docker network rm elastic-net
 export ELASTIC_PASSWORD="genov4" 
 export KIBANA_PASSWORD="genov4.cool"
 
-docker_local_dir="/media/hieunguyen/HD0/es_docker_dir";
+# docker_local_dir="/media/hieunguyen/HD0/es_docker_dir";
+docker_local_dir="/Users/hieunguyen/src/data/docker_savedir";
 
 docker network create elastic-net
 docker run -p 127.0.0.1:9200:9200 -d --name elasticsearch --network elastic-net \
@@ -42,6 +43,7 @@ docker run -p 127.0.0.1:5601:5601 -d --name kibana --network elastic-net \
 export MINIO_ROOT_USER=hieunguyen
 export MINIO_ROOT_PASSWORD=genov4.cool
 # export MINIO_VOLUMES="/Volumes/HNSD02/minio"
-export MINIO_VOLUMES="/media/hieunguyen/HD0/minio"
+# export MINIO_VOLUMES="/media/hieunguyen/HD0/minio"
+export MINIO_VOLUMES="/Users/hieunguyen/src/data/minio"
 # Start MinIO server
 minio server --console-address :9412 --address :9411

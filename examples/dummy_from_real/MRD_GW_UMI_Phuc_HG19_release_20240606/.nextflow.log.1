@@ -1,0 +1,219 @@
+Jun-07 00:31:34.794 [main] DEBUG nextflow.cli.Launcher - $> nextflow run /mnt/DATASM14/hieunho/hieu_pipeline/ECD_WGS_features_HG38/nextflow/main_bwa.nf -c /mnt/DATASM14/hieunho/hieu_pipeline/ECD_WGS_features_HG38/nextflow/main_slurm.config --OUTDIR /datassd/hieunho/ECD_WGS_features_HG38/ECD_WGS_features-batch4 --FQDIR /mnt/NAS_PROJECT/vol_ECDteam/hieunho/link_fastq/ECD_WGS_features-batch4 --PP_REPO /mnt/DATASM14/hieunho/hieu_pipeline/ECD_WGS_features_HG38 -w /datassd/hieunho/ECD_WGS_features_HG38/ECD_WGS_features-batch4/work --SRC /mnt/DATASM14/hieunho/hieu_pipeline/ECD_WGS_features_HG38/src --RESOURCE /mnt/DATASM14/hieunho/hieu_pipeline/ECD_WGS_features_HG38/resource -with-report /datassd/hieunho/ECD_WGS_features_HG38/ECD_WGS_features-batch4/report.html
+Jun-07 00:31:34.932 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.10.6
+Jun-07 00:31:35.011 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/hieutran/.nextflow/plugins; core-plugins: nf-amazon@1.11.3,nf-azure@0.14.2,nf-codecommit@0.1.2,nf-console@1.0.4,nf-ga4gh@1.0.4,nf-google@1.4.5,nf-tower@1.5.6,nf-wave@0.5.3
+Jun-07 00:31:35.032 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jun-07 00:31:35.034 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jun-07 00:31:35.037 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jun-07 00:31:35.053 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jun-07 00:31:35.374 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /mnt/DATASM14/hieunho/hieu_pipeline/ECD_WGS_features_HG38/nextflow/main_slurm.config
+Jun-07 00:31:35.375 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/DATASM14/hieunho/hieu_pipeline/ECD_WGS_features_HG38/nextflow/main_slurm.config
+Jun-07 00:31:35.430 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jun-07 00:31:36.596 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=1 from script declararion
+Jun-07 00:31:36.631 [main] INFO  nextflow.cli.CmdRun - Launching `/mnt/DATASM14/hieunho/hieu_pipeline/ECD_WGS_features_HG38/nextflow/main_bwa.nf` [elated_borg] DSL1 - revision: d227cbc893
+Jun-07 00:31:36.632 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jun-07 00:31:36.632 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Jun-07 00:31:36.643 [main] DEBUG nextflow.secret.LocalSecretsProvider - Secrets store: /home/hieutran/.nextflow/secrets/store.json
+Jun-07 00:31:36.646 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@8cc8cdb] - activable => nextflow.secret.LocalSecretsProvider@8cc8cdb
+Jun-07 00:31:36.733 [main] DEBUG nextflow.Session - Session UUID: 7b7acfc0-27e1-4d56-be15-281c8f295cde
+Jun-07 00:31:36.734 [main] DEBUG nextflow.Session - Run name: elated_borg
+Jun-07 00:31:36.738 [main] DEBUG nextflow.Session - Executor pool size: 2
+Jun-07 00:31:36.750 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jun-07 00:31:36.807 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 22.10.6 build 5843
+  Created: 23-01-2023 23:20 UTC (24-01-2023 06:20 ICST)
+  System: Linux 4.18.0-552.el8.x86_64
+  Runtime: Groovy 3.0.13 on OpenJDK 64-Bit Server VM 11.0.9.1-internal+0-adhoc..src
+  Encoding: UTF-8 (UTF-8)
+  Process: 2748095@r04.cluster [192.168.20.14]
+  CPUs: 2 - Mem: 2 GB (1.8 GB) - Swap: 0 (0)
+Jun-07 00:31:36.939 [main] DEBUG nextflow.Session - Work-dir: /datassd/hieunho/ECD_WGS_features_HG38/ECD_WGS_features-batch4/work [nfs]
+Jun-07 00:31:36.941 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/DATASM14/hieunho/hieu_pipeline/ECD_WGS_features_HG38/nextflow/bin
+Jun-07 00:31:36.953 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jun-07 00:31:36.969 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jun-07 00:31:37.050 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jun-07 00:31:37.064 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Jun-07 00:31:37.358 [main] DEBUG nextflow.Session - Session start
+Jun-07 00:31:38.608 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jun-07 00:31:38.707 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /mnt/NAS_PROJECT/vol_ECDteam/hieunho/link_fastq/ECD_WGS_features-batch4/; pattern: *_R{1,2}*; options: [:]
+Jun-07 00:31:38.926 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:FastQC` matches process FastQC
+Jun-07 00:31:38.930 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-07 00:31:38.930 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-07 00:31:38.939 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Jun-07 00:31:38.946 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jun-07 00:31:38.952 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Jun-07 00:31:39.036 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:Dedupfastq` matches process Dedupfastq
+Jun-07 00:31:39.037 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-07 00:31:39.037 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-07 00:31:39.052 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:Trim` matches process Trim
+Jun-07 00:31:39.053 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-07 00:31:39.053 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-07 00:31:39.067 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:Align_bwa` matches process Align_bwa
+Jun-07 00:31:39.068 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-07 00:31:39.068 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-07 00:31:39.078 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:SortBam` matches process SortBam
+Jun-07 00:31:39.079 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-07 00:31:39.079 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-07 00:31:39.085 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:Preprocessing` matches process Preprocessing
+Jun-07 00:31:39.085 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-07 00:31:39.085 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-07 00:31:39.097 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:Calculate_feature` matches process Calculate_feature
+Jun-07 00:31:39.097 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-07 00:31:39.097 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-07 00:31:39.107 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:Read_count` matches process Read_count
+Jun-07 00:31:39.107 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-07 00:31:39.107 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-07 00:31:39.114 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:Run_ichorCNA` matches process Run_ichorCNA
+Jun-07 00:31:39.115 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-07 00:31:39.115 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-07 00:31:39.138 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:Summary_tumor_fraction` matches process Summary_tumor_fraction
+Jun-07 00:31:39.138 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Jun-07 00:31:39.139 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Jun-07 00:31:39.143 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: Preprocessing, Run_ichorCNA, Trim, Align_bwa, Calculate_feature, SortBam, Read_count, Summary_tumor_fraction, Dedupfastq, FastQC
+Jun-07 00:31:39.151 [main] WARN  nextflow.Session - There's no process matching config selector: Align
+Jun-07 00:31:39.152 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Jun-07 00:31:39.152 [main] DEBUG nextflow.Session - Session await
+Jun-07 00:31:39.161 [Actor Thread 2] ERROR nextflow.extension.OperatorImpl - @unknown
+nextflow.exception.ProcessUnrecoverableException: Cannot find any reads matching: /mnt/NAS_PROJECT/vol_ECDteam/hieunho/link_fastq/ECD_WGS_features-batch4/*_R{1,2}*
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:72)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:105)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:59)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at nextflow.Nextflow.error(Nextflow.groovy:262)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at org.codehaus.groovy.runtime.callsite.StaticMetaMethodSite$StaticMetaMethodSiteNoUnwrap.invoke(StaticMetaMethodSite.java:131)
+	at org.codehaus.groovy.runtime.callsite.StaticMetaMethodSite.callStatic(StaticMetaMethodSite.java:100)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallStatic(CallSiteArray.java:55)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callStatic(AbstractCallSite.java:217)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callStatic(AbstractCallSite.java:231)
+	at Script_cd67e154$_runScript_closure1.doCall(Script_cd67e154:32)
+	at Script_cd67e154$_runScript_closure1.doCall(Script_cd67e154)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:274)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1035)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:38)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:130)
+	at nextflow.extension.OperatorImpl$_ifEmpty_closure34.doCall(OperatorImpl.groovy:1263)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:274)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1035)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:38)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at groovy.lang.Closure$call.call(Unknown Source)
+	at nextflow.extension.DataflowHelper$3.afterStop(DataflowHelper.groovy:255)
+	at groovyx.gpars.dataflow.operator.DataflowProcessor.fireAfterStop(DataflowProcessor.java:324)
+	at groovyx.gpars.dataflow.operator.DataflowProcessorActor.afterStop(DataflowProcessorActor.java:59)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1268)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1035)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokePojoMethod(InvokerHelper.java:1017)
+	at org.codehaus.groovy.runtime.InvokerHelper.invokeMethod(InvokerHelper.java:1008)
+	at groovyx.gpars.actor.Actor.callDynamic(Actor.java:369)
+	at groovyx.gpars.actor.Actor.handleTermination(Actor.java:320)
+	at groovyx.gpars.actor.AbstractLoopingActor.terminate(AbstractLoopingActor.java:204)
+	at groovyx.gpars.dataflow.operator.DataflowProcessor.terminate(DataflowProcessor.java:147)
+	at groovyx.gpars.dataflow.operator.DataflowProcessorActor.checkPoison(DataflowProcessorActor.java:115)
+	at groovyx.gpars.dataflow.operator.DataflowOperatorActor.onMessage(DataflowOperatorActor.java:83)
+	at groovyx.gpars.actor.impl.SDAClosure$1.call(SDAClosure.java:43)
+	at groovyx.gpars.actor.AbstractLoopingActor.runEnhancedWithoutRepliesOnMessages(AbstractLoopingActor.java:293)
+	at groovyx.gpars.actor.AbstractLoopingActor.access$400(AbstractLoopingActor.java:30)
+	at groovyx.gpars.actor.AbstractLoopingActor$1.handleMessage(AbstractLoopingActor.java:93)
+	at groovyx.gpars.util.AsyncMessagingCore.run(AsyncMessagingCore.java:132)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Jun-07 00:31:39.182 [Actor Thread 2] DEBUG nextflow.Session - Session aborted -- Cause: Cannot find any reads matching: /mnt/NAS_PROJECT/vol_ECDteam/hieunho/link_fastq/ECD_WGS_features-batch4/*_R{1,2}*
+Jun-07 00:31:39.219 [Actor Thread 2] DEBUG nextflow.Session - The following nodes are still active:
+[process] FastQC
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] Dedupfastq
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] Trim
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: ADAPTER_FILE
+  port 2: (cntrl) -     ; channel: $
+
+[process] Align_bwa
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: BWA_REPO
+  port 2: (cntrl) -     ; channel: $
+
+[process] SortBam
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] Preprocessing
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: SRC
+  port 2: (value) bound ; channel: RESOURCE
+  port 3: (value) bound ; channel: preprocessing_script
+  port 4: (value) bound ; channel: HGDIR
+  port 5: (cntrl) -     ; channel: $
+
+[process] Calculate_feature
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: SRC
+  port 2: (cntrl) -     ; channel: $
+
+[process] Read_count
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] Run_ichorCNA
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: SRC
+  port 2: (cntrl) -     ; channel: $
+
+[process] Summary_tumor_fraction
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: *
+  port 1: (value) bound ; channel: SRC
+  port 2: (cntrl) -     ; channel: $
+
+Jun-07 00:31:39.228 [main] DEBUG nextflow.Session - Session await > all processes finished
+Jun-07 00:31:39.228 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jun-07 00:31:39.238 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+Jun-07 00:31:39.239 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Jun-07 00:31:39.242 [main] DEBUG nextflow.trace.ReportObserver - Execution report summary data:
+  []
+Jun-07 00:31:39.941 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jun-07 00:31:40.064 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
