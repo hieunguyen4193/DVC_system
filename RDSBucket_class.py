@@ -188,3 +188,62 @@ class ESearch:
         response = self.es.search(index=PROFILE_NAME, body=query)
         indexdf = pd.DataFrame([doc['_source'] for doc in response['hits']['hits']])
         return(indexdf)
+    def search(self, search_indices, search_query, size = 100):
+        response = self.es.search(index = search_indices, body = search_query, size = size)
+        search_resdf = pd.DataFrame([doc['_source'] for doc in response['hits']['hits']])
+        return(search_resdf)
+
+
+def download_selected_file(minio_credential, bucketName, object_name, versionID, downloaddir):
+    """
+    Downloads a selected file from a Minio bucket.
+
+    Args:
+        minio_credential (str): The path to the Minio credential file.
+        bucketName (str): The name of the Minio bucket.
+        object_name (str): The name of the object to download.
+        versionID (str): The version ID of the object to download.
+        downloaddir (str): The directory to save the downloaded file.
+
+    Returns:
+        bool: True if the file was downloaded successfully, False otherwise.
+    """
+    with open(minio_credential, 'r') as file:
+        keys = json.load(file)
+
+    minio_client = minio.Minio(
+        endpoint="localhost:9411",
+        access_key=keys["accessKey"],
+        secret_key=keys["secretKey"],
+        secure=False 
+    )
+    try:
+        file_path = os.path.join(downloaddir, object_name)
+        minio_client.fget_object(bucket_name = bucketName, 
+                                 object_name = object_name, 
+                                 file_path = file_path, 
+                                 version_id = versionID)
+        print(f"File '{object_name}' downloaded successfully.")
+        return True
+    except S3Error as e:
+        print(f"Error downloading file: {e}")
+        return False
+    
+def search_with_api_key(search_index, search_query, api_key = "SUZzN3FKQUJOeWdud1JqOElhWDY6d3RmR2VzQWtUZzJqZExtR2NHMVotUQ=="):
+    """
+    Searches the specified Elasticsearch index using the provided search query and API key.
+
+    Parameters:
+    - search_index (str): The name of the Elasticsearch index to search.
+    - search_query (dict): The search query to be executed.
+    - api_key (str, optional): The API key to authenticate the request. Defaults to a sample API key.
+
+    Returns:
+    - search_resdf (pandas.DataFrame): The search results as a DataFrame.
+    """
+    client = Elasticsearch(
+    "http://localhost:9200/",
+    api_key=api_key)
+    response = client.search(index = search_index, body = search_query)
+    search_resdf = pd.DataFrame([doc['_source'] for doc in response['hits']['hits']])
+    return(search_resdf)
