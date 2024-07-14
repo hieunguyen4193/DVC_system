@@ -188,10 +188,14 @@ class ESearch:
         response = self.es.search(index=PROFILE_NAME, body=query)
         indexdf = pd.DataFrame([doc['_source'] for doc in response['hits']['hits']])
         return(indexdf)
+    
     def search(self, search_indices, search_query, size = 100):
         response = self.es.search(index = search_indices, body = search_query, size = size)
         search_resdf = pd.DataFrame([doc['_source'] for doc in response['hits']['hits']])
         return(search_resdf)
+    ##### FIX ME: perhaps we should use the library elasticsearch_dsl instead?
+    # see https://elasticsearch-dsl.readthedocs.io/en/latest/
+    # and https://stackoverflow.com/questions/53729753/how-to-get-all-results-from-elasticsearch-in-python
 
 
 def download_selected_file(minio_credential, bucketName, object_name, versionID, downloaddir):

@@ -70,15 +70,5 @@ if search_query:
         st.title("Search Results")
         st.dataframe(search_res)
 
-        # Add download buttons for each row
-        for index, row in search_res.iterrows():
-            file_name = f"result_{index}.json"
-            file_content = row.to_json()
-            st.download_button(
-                label=f"Download row {index}",
-                data=file_content,
-                file_name=file_name,
-                mime="application/json"
-            )
     else:
         st.write("No results found.")
