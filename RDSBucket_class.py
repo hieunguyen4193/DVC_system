@@ -159,7 +159,12 @@ class RDSBucket:
         except S3Error as e:
             print(f"Error downloading file: {e}")
             return False
-        
+    
+    #####----------------------------------------------------------------#####
+    ##### UPDATE ME: new features and functions
+    #####----------------------------------------------------------------#####
+    # def update_metadata(self):
+
 class ESearch:
     def __init__(self, 
                  es_credential, 
