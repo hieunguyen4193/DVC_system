@@ -126,7 +126,19 @@ DATA_PROFILES = {
             "depth": {
                 "type": "text"
             },
-            "cancer_label": {
+            "label1": {
+                "type": "text"
+            }, 
+            "label2": {
+                "type": "text"
+            }, 
+            "label3": {
+                "type": "text"
+            }, 
+            "label4": {
+                "type": "text"
+            }, 
+            "Note": {
                 "type": "text"
             }, 
             "bucket": {
