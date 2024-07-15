@@ -55,6 +55,9 @@ DATA_PROFILES = {
             "label4": {
                 "type": "text"
             }, 
+            "member": {
+                "type": "text"
+            },
             "bucket": {
                 "type": "text"
             }
@@ -72,6 +75,9 @@ DATA_PROFILES = {
                 "type": "text"
             },
             "FeatureName": {
+                "type": "text"
+            },
+            "Description": {
                 "type": "text"
             },
             "FeatureVersion": {
@@ -129,6 +135,9 @@ DATA_PROFILES = {
                 "type": "text"
             }, 
             "label4": {
+                "type": "text"
+            }, 
+            "member": {
                 "type": "text"
             }, 
             "bucket": {

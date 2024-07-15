@@ -32,11 +32,13 @@ See `data_profiles.py` for the `json`/`dictionary` template.
 - `Note`: Additional notes on the pipeline/data.
 - `label1-4`: Slots for labeling the data (e.g cancer, control, TOO class, ...)
 - `bucket`: Minio bucket name.
+- `member`: the person in charge of the data.
 
 ## feature
-The `feature` data profile shares the following fields with the **bam** profile: `Labcode`, `SequencingID`, `FileName`, `FileExt`, `Date`, `Pipeline`, `Pipeline_params`, `Pipeline_repo`, `Project`, `Sub_project`, `Ref_genome`, `Note`, `label1-4`, `bucket`. 
+The `feature` data profile shares the following fields with the **bam** profile: `Labcode`, `SequencingID`, `FileName`, `FileExt`, `Date`, `Pipeline`, `Pipeline_params`, `Pipeline_repo`, `Project`, `Sub_project`, `Ref_genome`, `Note`, `label1-4`, `bucket`, `member`. 
 
 The following new fields need to be defined:
+- `Description`: a short description of the feature. 
 - `FeatureName`: name of the feature.
 - `FeatureVersion`: version of the feature (e.g GW_TM_feature_v0.1, GW_TM_feature_v0.2, ...)
 - `Feature_Pipeline`, `Feature_Pipeline_params`, `Feature_Pipeline_repo`: information on the pipeline that generate the feature data. 
