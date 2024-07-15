@@ -1,9 +1,11 @@
 # Table of contents
 
+- [Table of contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Changelogs](#changelogs)
 - [Data profiles](#data-profiles)
   - [bam](#bam)
+  - [feature](#feature)
 
 TOC generated from https://luciopaiva.com/markdown-toc/
 
@@ -56,5 +58,5 @@ The following new fields need to be defined exclusively:
 
 - `Feature_Pipeline`, `Feature_Pipeline_params`, `Feature_Pipeline_repo`: information on the pipeline that generate the feature data. 
 
-- (!IMPORTANT) `Input`, `Input_type`: these two fields indicate where and which we should take the input file to generate this feature
+- (**!IMPORTANT**) `Input`, `Input_type`: these two fields indicate where and which we should take the input file to generate this feature
  
