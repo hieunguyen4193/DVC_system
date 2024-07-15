@@ -49,26 +49,50 @@ os.system("mkdir  -p {}".format(donwloaddir))
 ##### genearte the connection to Elasticsearch
 es = ESearch(es_credential = es_credential)
 
-# Define search index
-search_indices = st.text_input("Enter the index:")
+tab1, tab2 = st.tabs(["Data summary", "Search query"])
 
-# Define search query as JSON input
-search_query_json = st.text_area("Enter the search query in JSON format:")
+with tab1:
+    st.header("All ECD datasets")
+   
+with tab2:
+    st.header("Search and Query")
+    # Define search index
+    search_indices = st.text_input("Enter the index:")
 
-# Parse the JSON input
-try:
-    search_query = json.loads(search_query_json)
-except json.JSONDecodeError:
-    st.error("Invalid JSON format. Please correct the input.")
-    search_query = None
+    # Define search query as JSON input
+    search_query_json = st.text_area("Enter the search query in JSON format:")
 
-# Get the search results if the query is valid
-if search_query:
-    search_res = es.search(search_indices=search_indices, search_query=search_query)
+    # Parse the JSON input
+    try:
+        search_query = json.loads(search_query_json)
+    except json.JSONDecodeError:
+        st.error("Invalid JSON format. Please correct the input.")
+        search_query = None
 
-    if search_res.shape[0] != 0:
-        st.title("Search Results")
-        st.dataframe(search_res)
+    # Get the search results if the query is valid
+    if search_query:
+        search_res = es.search(search_indices=search_indices, search_query=search_query)
+        true_false_df = pd.DataFrame(data = [False for item in range(search_res.shape[0])], columns = ["select"])
+        search_res = pd.concat([search_res, true_false_df], axis = 1)
+        
+        if search_res.shape[0] != 0:
+            st.title("Search Results")
+            st.data_editor(
+                search_res,
+                column_config={
+                    "selct": st.column_config.CheckboxColumn(
+                        "Your favorite?",
+                        help="Select your **favorite** widgets",
+                        default=False,
+                    )
+                },
+                disabled=["widgets"],
+                hide_index=True,
+            )
 
-    else:
-        st.write("No results found.")
+        else:
+            st.write("No results found.")
+
+   
+
+
