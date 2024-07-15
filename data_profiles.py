@@ -101,6 +101,9 @@ DATA_PROFILES = {
             "Feature_Pipeline_repo": {
                 "type": "text"
             },
+            "Ref_genome": {
+                "type": "text"
+            },
             "Input": {
                 "type": "text"
             },
