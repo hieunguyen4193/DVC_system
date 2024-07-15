@@ -169,7 +169,10 @@ DATA_PROFILES = {
             "readlen": {
                 "type": "integer"
             },
-            "cancer_label": {
+            "label1": {
+                "type": "text"
+            },
+            "label2": {
                 "type": "text"
             }, 
             "withUMI": {
@@ -197,6 +200,9 @@ DATA_PROFILES = {
             "Date": {
                 "type": "date"
             },
+            "featureVersion": {
+                "type": "text"
+            },
             "featureName": {
                 "type": "text"
             },
@@ -207,6 +213,70 @@ DATA_PROFILES = {
                 "type": "text"
             },
             "feature_pipeline": {
+                "type": "text"
+            },
+            "feature_pipeline_params": {
+                "type": "text"
+            },
+            "project": {
+                "type": "text"
+            }, 
+            "sub_project": {
+                "type": "text"
+            },
+            "label1": {
+                "type": "text"
+            },
+            "label2": {
+                "type": "text"
+            },
+            "label3": {
+                "type": "text"
+            },            
+            "Note": {
+                "type": "text"
+            },
+            "bucket": {
+                "type": "text"
+            }
+        }
+    },
+    ##########################################################################
+    ###### tabular feature file, single column, 1 column = 1 sample, rows = features
+    ##########################################################################
+    "wgbsfeature" : {
+        "properties": {
+            "Labcode": {
+                "type": "text"
+            },
+            "SequencingID": {
+                "type": "text"
+            }, 
+            "FileName": {
+                "type": "text"
+            },
+            "FileType": {
+                "type": "text"
+            },
+            "Date": {
+                "type": "date"
+            },
+            "featureName": {
+                "type": "text"
+            },
+            "featureVersion": {
+                "type": "text"
+            },
+            "bioinfo_pipeline": {
+                "type": "text"
+            },
+            "bioinfo_pipeline_params": {
+                "type": "text"
+            },
+            "feature_pipeline": {
+                "type": "text"
+            },
+            "methylaionCaller": {
                 "type": "text"
             },
             "feature_pipeline_params": {
