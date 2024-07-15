@@ -5,6 +5,8 @@
 - [Data profiles](#data-profiles)
   - [bam](#bam)
 
+TOC generated from https://luciopaiva.com/markdown-toc/
+
 # Introduction
 
 # Changelogs
@@ -45,3 +47,14 @@ See the file "data_profiles.py" for detailed construction of each data profile.
 
 ## feature
 
+This data profile shares the following fields with the profile **bam**: `Labcode`, `SequencingID`, `FileName`, `FileExt`, `Date`, `Pipeline`, `Pipeline_params`, `Pipeline_repo`, `Project`, `Sub_project`, `Note`, `label1-4`, `bucket`. 
+
+The following new fields need to be defined exclusively:
+- `FeatureName`: name of the feature.
+
+- `FeatureVersion`: version of the feature (e.g GW_TM_feature_v0.1, GW_TM_feature_v0.2, ...)
+
+- `Feature_Pipeline`, `Feature_Pipeline_params`, `Feature_Pipeline_repo`: information on the pipeline that generate the feature data. 
+
+- (!IMPORTANT) `Input`, `Input_type`: these two fields indicate where and which we should take the input file to generate this feature
+ 
