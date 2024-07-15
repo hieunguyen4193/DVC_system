@@ -49,7 +49,7 @@ See the file "data_profiles.py" for detailed construction of each data profile.
 
 ## feature
 
-This data profile shares the following fields with the profile **bam**: `Labcode`, `SequencingID`, `FileName`, `FileExt`, `Date`, `Pipeline`, `Pipeline_params`, `Pipeline_repo`, `Project`, `Sub_project`, `Note`, `label1-4`, `bucket`. 
+The `feature` data profile shares the following fields with the **bam** profile: `Labcode`, `SequencingID`, `FileName`, `FileExt`, `Date`, `Pipeline`, `Pipeline_params`, `Pipeline_repo`, `Project`, `Sub_project`, `Note`, `label1-4`, `bucket`. 
 
 The following new fields need to be defined exclusively:
 - `FeatureName`: name of the feature.
@@ -59,4 +59,11 @@ The following new fields need to be defined exclusively:
 - `Feature_Pipeline`, `Feature_Pipeline_params`, `Feature_Pipeline_repo`: information on the pipeline that generate the feature data. 
 
 - (**!IMPORTANT**) `Input`, `Input_type`: these two fields indicate where and which we should take the input file to generate this feature
- 
+
+## cov
+The `cov` data profile shares the following fields with the **bam** profile:
+`Labcode`, `SequencingID`, `FileName`, `Date`, `Pipeline`, `Pipeline_params`, `Pipeline_repo`, `Project`, `Sub_project`, `Note`, `label1-4`, `bucket`.
+
+This profile has these additional fields `methylationCaller`, `methylationCallerParams` (e.g Bismark methylation extractor, ...)
+
+## fastq
