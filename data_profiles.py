@@ -145,7 +145,7 @@ DATA_PROFILES = {
             }
         }
     },
-    "cov": {
+    "bismarkcov": {
         "properties": {
             "FileName": {
                 "type": "text"
@@ -156,19 +156,13 @@ DATA_PROFILES = {
             "SequencingID": {
                 "type": "text"
             },
-            "Description": {
-                "type": "text"
-            },
             "Date": {
                 "type": "date"
             },
-            "Pipeline": {
+            "methylationCaller": {
                 "type": "text"
             },
-            "Pipeline_params": {
-                "type": "text"
-            },
-            "Pipeline_repo": {
+            "methylationCallerParams": {
                 "type": "text"
             },
             "Ref_genome": {

@@ -138,6 +138,8 @@ class RDSBucket:
                     print(f"Error uploading file: {e}")
                     return False
             else:
+                print([item for item in sorted(list(file_metadata.keys())) if item not in sorted([list(item.keys()) for item in self.dataProfile.values()][0])])
+                
                 raise ValueError("Cannot upload file. The file metadata does not match the bucket's data profile")
             
     def download_file_from_bucket(self, object_name, downloaddir):
