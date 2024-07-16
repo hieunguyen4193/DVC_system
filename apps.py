@@ -49,9 +49,12 @@ os.system("mkdir  -p {}".format(donwloaddir))
 ##### genearte the connection to Elasticsearch
 es = ESearch(es_credential = es_credential)
 all_indices = [item for item in es.es.indices.get_alias(index="*") if "." not in item]
-tab1, tab2 = st.tabs(["Data summary", "Search query"])
+tab1, tab2, tab3 = st.tabs(["Release dataset", "Data summary", "Search query"])
 
 with tab1:
+    st.header("Release dataset")
+
+with tab2:
     st.header("All ECD datasets")
     selected_index = st.selectbox(
         'All available indices',
@@ -61,7 +64,7 @@ with tab1:
    # Choose th bucket 
    # Then show the descriptive statistics of the bucket/index. 
    
-with tab2:
+with tab3:
     st.header("Search and Query")
     # Define search index
     search_indices = st.text_input("Enter the index:")
