@@ -108,6 +108,7 @@ class RDSBucket:
         """
         ##### check if the object_name is already in the bucket. 
         if (object_name in [item.object_name for item in self.minio_client.list_objects(self.bucketName, recursive=True)]) == True and (update_version == False):
+            print("{} is already existed".format(object_name))
             raise ValueError("Cannot upload file. The file already exists in the bucket. Please choose another name or set update_version = True")
         else:       
             ##### add bucket name to the file metadata
