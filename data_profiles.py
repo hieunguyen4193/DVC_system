@@ -205,9 +205,6 @@ DATA_PROFILES = {
             "FeatureName": {
                 "type": "text"
             },
-            "FileExt": {
-                "type": "text"
-            },
             "Labcode": {
                 "type": "text"
             },
@@ -245,9 +242,6 @@ DATA_PROFILES = {
                 "type": "text"
             },
             "Input": {
-                "type": "text"
-            },
-            "Input_type": {
                 "type": "text"
             },
             "Project": {

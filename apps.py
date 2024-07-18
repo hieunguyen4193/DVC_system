@@ -67,7 +67,9 @@ with tab2:
 with tab3:
     st.header("Search and Query")
     # Define search index
-    search_indices = st.text_input("Enter the index:")
+    search_indices = st.selectbox(
+        'Select an index',
+        (all_indices))
 
     # Define search query as JSON input
     search_query_json = st.text_area("Enter the search query in JSON format:")
