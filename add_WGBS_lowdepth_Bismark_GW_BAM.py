@@ -33,7 +33,7 @@ sub_data_name = "Bismark_GW_BAM"
 
 all_files = [item for item in pathlib.Path("{}/examples/dummy_from_real/{}/{}".format(path_to_project_src, data_name, sub_data_name)).glob("*")
                 if ".DS" not in item.name]  
-metadata = pd.read_excel("./ECD_metadata/metadata_cfDNA_lowpdepth.xlsx")
+metadata = pd.read_excel(os.path.join(path_to_project_src, "ECD_metadata/metadata_cfDNA_lowpdepth.xlsx"))
 metadata["FileName"] = metadata["Bismark_GW_BAM"].apply(lambda x: os.path.basename(str(x)))
 
 #### generate metadata template according to the profile "bamfile"

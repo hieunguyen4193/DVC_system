@@ -13,7 +13,26 @@ import minio
 from minio.error import S3Error
 from minio.commonconfig import ENABLED
 from minio.versioningconfig import VersioningConfig
+#
+def object_exists_in_bucket(minio_client, bucket_name, object_name):
+    """
+    Check if an object exists in a MinIO bucket.
 
+    Args:
+        minio_client (Minio): The MinIO client.
+        bucket_name (str): The name of the bucket.
+        object_name (str): The name of the object to check.
+
+    Returns:
+        bool: True if the object exists, False otherwise.
+    """
+    try:
+        # Attempt to get object's metadata
+        minio_client.stat_object(bucket_name, object_name)
+        return True  # If the above line succeeds, the object exists
+    except Exception as e:
+        # If an exception is caught, the object does not exist
+        return False
 
 class RDSBucket:
     def __init__(self, 
@@ -87,8 +106,9 @@ class RDSBucket:
         except S3Error as e:
             print(f"Error creating bucket: {e}")
             return False
+    
         
-    def upload_file_to_bucket(self, path_to_file, object_name, file_metadata, update_version = False):
+    def upload_file_to_bucket(self, path_to_file, object_name, file_metadata, update_version = False, raise_error_if_exists = False):
         """
         Uploads a file to the bucket.
 
@@ -107,9 +127,14 @@ class RDSBucket:
                 does not match the bucket's data profile.
         """
         ##### check if the object_name is already in the bucket. 
-        if (object_name in [item.object_name for item in self.minio_client.list_objects(self.bucketName, recursive=True)]) == True and (update_version == False):
-            print("{} is already existed".format(object_name))
-            raise ValueError("Cannot upload file. The file already exists in the bucket. Please choose another name or set update_version = True")
+        # if (object_name in [item.object_name for item in self.minio_client.list_objects(self.bucketName, recursive=True)]) == True and (update_version == False):
+        if (object_exists_in_bucket(self.minio_client, self.bucketName, object_name) == True) and (update_version == False):
+            if raise_error_if_exists:
+                print("{} is already existed".format(object_name))
+                raise ValueError("Cannot upload file. The file already exists in the bucket. Please choose another name or set update_version = True")
+            else:
+                print("The object is already existed. Skip uploading")
+                # pass
         else:       
             ##### add bucket name to the file metadata
             file_metadata = {**file_metadata, **{"bucket": self.bucketName}}

@@ -44,7 +44,7 @@ feature_description = {
 
 data_name = "WGBS_lowdepth"
 sub_data_name = "GW_TM_feature_v0.1"
-metadata = pd.read_excel(os.path.join(path_to_project_src, "/ECD_metadata/metadata_cfDNA_lowpdepth.xlsx"))
+metadata = pd.read_excel(os.path.join(path_to_project_src, "ECD_metadata/metadata_cfDNA_lowpdepth.xlsx"))
 
 for feature_name in feature_description.keys():
     all_files = [item for item in pathlib.Path("{}/examples/dummy_from_real/{}/{}/{}".format(path_to_project_src, data_name, sub_data_name, feature_name)).glob("*")
