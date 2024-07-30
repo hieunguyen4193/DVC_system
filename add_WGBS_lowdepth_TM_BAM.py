@@ -85,4 +85,5 @@ for path in tqdm(input_dict.keys()):
     file_metadata = input_dict[path]
     bamBucket.upload_file_to_bucket(path_to_file = path, 
                                     object_name= file_metadata["FileName"], 
-                                    file_metadata = file_metadata)
+                                    file_metadata = file_metadata, 
+                                    update_version=True)

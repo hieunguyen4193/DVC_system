@@ -108,7 +108,7 @@ class RDSBucket:
             return False
     
         
-    def upload_file_to_bucket(self, path_to_file, object_name, file_metadata, update_version = False, raise_error_if_exists = False):
+    def upload_file_to_bucket(self, path_to_file, object_name, file_metadata, update_version = False, raise_error_if_exists = True):
         """
         Uploads a file to the bucket.
 
