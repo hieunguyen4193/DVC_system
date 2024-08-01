@@ -73,7 +73,7 @@ es_credential = os.path.join(path_to_project_src, "es_credential.json")
 
 bamBucket = RDSBucket( 
                         minio_credential = minio_credential, 
-                        bucketName = "bam",
+                        bucketName = "lowdepth-gw-bismark-bam",
                         PROFILE_NAME = "bamfile",
                         DATA_PROFILES = DATA_PROFILES,
                         es_credential = es_credential, 

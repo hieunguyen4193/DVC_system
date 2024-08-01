@@ -81,7 +81,7 @@ es_credential = os.path.join(path_to_project_src, "es_credential.json")
 
 bamBucket = RDSBucket( 
                         minio_credential = minio_credential, 
-                        bucketName = "cov",
+                        bucketName = "pbmc-cov",
                         PROFILE_NAME = "bismarkcov",
                         DATA_PROFILES = DATA_PROFILES,
                         es_credential = es_credential, 

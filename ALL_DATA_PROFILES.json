@@ -1,0 +1,119 @@
+[
+    {
+        "bam": {
+            "properties": {
+                "Labcode": {
+                    "type": "text"
+                },
+                "SequencingID": {
+                    "type": "text"
+                },
+                "FileName": {
+                    "type": "text"
+                },
+                "FileType": {
+                    "type": "text"
+                },
+                "Date": {
+                    "type": "date"
+                },
+                "pipeline": {
+                    "type": "text"
+                },
+                "project": {
+                    "type": "text"
+                },
+                "sub_project": {
+                    "type": "text"
+                },
+                "ref_genome": {
+                    "type": "text"
+                },
+                "bucket": {
+                    "type": "text"
+                }
+            }
+        }
+    },
+    {
+        "cov": {
+            "properties": {
+                "Labcode": {
+                    "type": "text"
+                },
+                "SequencingID": {
+                    "type": "text"
+                },
+                "FileName": {
+                    "type": "text"
+                },
+                "FileType": {
+                    "type": "text"
+                },
+                "Date": {
+                    "type": "date"
+                },
+                "pipeline": {
+                    "type": "text"
+                },
+                "project": {
+                    "type": "text"
+                },
+                "sub_project": {
+                    "type": "text"
+                },
+                "ref_genome": {
+                    "type": "text"
+                },
+                "methylationCaller": {
+                    "type": "text"
+                },
+                "bucket": {
+                    "type": "text"
+                }
+            }
+        }
+    },
+    {
+        "vcf": {
+            "properties": {
+                "Labcode": {
+                    "type": "text"
+                },
+                "SequencingID": {
+                    "type": "text"
+                },
+                "FileName": {
+                    "type": "text"
+                },
+                "FileType": {
+                    "type": "text"
+                },
+                "Date": {
+                    "type": "date"
+                },
+                "pipeline": {
+                    "type": "text"
+                },
+                "project": {
+                    "type": "text"
+                },
+                "sub_project": {
+                    "type": "text"
+                },
+                "ref_genome": {
+                    "type": "text"
+                },
+                "variantCaller": {
+                    "type": "text"
+                },
+                "variantAnnotation": {
+                    "type": "text"
+                },
+                "bucket": {
+                    "type": "text"
+                }
+            }
+        }
+    }
+]

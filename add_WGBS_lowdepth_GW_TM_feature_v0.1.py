@@ -93,7 +93,7 @@ for feature_name in feature_description.keys():
 
     bamBucket = RDSBucket( 
                             minio_credential = minio_credential, 
-                            bucketName = "wgbsfeature",
+                            bucketName = "wgbsfeature-v0.1",
                             PROFILE_NAME = "wgbsfeature",
                             DATA_PROFILES = DATA_PROFILES,
                             es_credential = es_credential, 
