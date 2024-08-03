@@ -23,7 +23,9 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
-##### Examples
+#####-------------------------------------------------------------------------------#####
+##### Examples: search query with DSL from easlasticsearch
+#####-------------------------------------------------------------------------------#####
 # search_query = {
 #   "query": {
 #     "match": {
@@ -32,39 +34,65 @@ st.set_page_config(layout="wide")
 #   }
 # }
 
-#####----------------------------------------------------------------#####
-##### preprocessing metadata for bam file
-#####----------------------------------------------------------------#####
-
 path_to_save_prep_metadata = "/Users/hieunguyen/src/DVC_system/examples/dummy_from_real/prep_metadata"
 os.system("mkdir -p {}".format(path_to_save_prep_metadata))
 
 path_to_main_input = "./examples/dummy_data"    
-minio_credential = "credentials.mb.json"
+minio_credential = "credentials.macstudio.json"
 es_credential = "es_credential.json"
 
 donwloaddir = "./examples/download"
 os.system("mkdir  -p {}".format(donwloaddir))
 
-##### genearte the connection to Elasticsearch
+##### generate the connection to minio
+with open(minio_credential, 'r') as file:
+            keys = json.load(file)
+        
+minio_client = minio.Minio(
+            endpoint="localhost:9411",
+            access_key=keys["accessKey"],
+            secret_key=keys["secretKey"],
+            secure=False 
+        )
+all_buckets = [bucket.name for bucket in minio_client.list_buckets()]
+
+##### generate the connection to Elasticsearch
 es = ESearch(es_credential = es_credential)
 all_indices = [item for item in es.es.indices.get_alias(index="*") if "." not in item]
-tab1, tab2, tab3 = st.tabs(["Release dataset", "Data summary", "Search query"])
+tab1, tab2, tab3, tab4 = st.tabs([
+    "Release dataset", 
+    "Data profiles",
+    "Data buckets", 
+    "Search query"])
 
+#####-------------------------------------------------------------------------------#####
+##### tab1
+#####-------------------------------------------------------------------------------#####
 with tab1:
     st.header("Release dataset")
 
+#####-------------------------------------------------------------------------------#####
+##### tab2
+#####-------------------------------------------------------------------------------#####
 with tab2:
     st.header("All ECD datasets")
     selected_index = st.selectbox(
         'All available indices',
         (all_indices))
    
-   # TO DO: list all buckets that use the index
-   # Choose th bucket 
-   # Then show the descriptive statistics of the bucket/index. 
-   
+#####-------------------------------------------------------------------------------#####
+##### tab3
+#####-------------------------------------------------------------------------------#####
 with tab3:
+    st.header("Data buckets")
+    search_indices = st.selectbox(
+        'Select an index',
+        (all_buckets))
+
+#####-------------------------------------------------------------------------------#####
+##### tab4
+#####-------------------------------------------------------------------------------#####
+with tab4:
     st.header("Search and Query")
     # Define search index
     search_indices = st.selectbox(
@@ -104,7 +132,3 @@ with tab3:
 
         else:
             st.write("No results found.")
-
-   
-
-
