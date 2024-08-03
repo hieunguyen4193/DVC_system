@@ -141,6 +141,7 @@ class RDSBucket:
             ##### check if the file_metadata match the bucket's dataProfile
             if sorted(list(file_metadata.keys())) == sorted([list(item.keys()) for item in self.dataProfile.values()][0]):
                 try:
+                    file_metadata = {**file_metadata, **{"profileName": self.PROFILE_NAME}}
                     with open(path_to_file, 'rb') as file_data:
                         file_stat = os.stat(path_to_file)
                         put_object_res = self.minio_client.put_object(
@@ -207,7 +208,10 @@ class ESearch:
             
         self.es = Elasticsearch(
             "http://localhost:9200", # deployed locally, no cloud
-            basic_auth=(keys["username"], keys["password"])) 
+            basic_auth=(
+                keys["username"], 
+                keys["password"])
+            ) 
         client_info = self.es.info()
         tmp = self.es.cat.indices(index='*', h='index', s='index:asc', format='json')
         self.ALL_PROFILES = [index['index'] for index in tmp if index['index'][0] != "."] # not show hidden indice
@@ -218,7 +222,7 @@ class ESearch:
                 "match_all": {}
             }
         }
-        response = self.es.search(index=PROFILE_NAME, body=query)
+        response = self.es.search(index=PROFILE_NAME, body=query, size = self.es.count(index=PROFILE_NAME)['count'])
         indexdf = pd.DataFrame([doc['_source'] for doc in response['hits']['hits']])
         return(indexdf)
     
@@ -226,6 +230,47 @@ class ESearch:
         response = self.es.search(index = search_indices, body = search_query, size = size)
         search_resdf = pd.DataFrame([doc['_source'] for doc in response['hits']['hits']])
         return(search_resdf)
+
+    def search_scroll(self, search_indices, search_query):
+        # Initialize the scroll
+        response = self.es.search(index=search_indices, body=search_query, scroll='2m')
+        scroll_id = response['_scroll_id']
+        all_hits = response['hits']['hits']
+        
+        # Scroll through the results
+        while True:
+            response = self.es.scroll(scroll_id=scroll_id, scroll='2m')
+            hits = response['hits']['hits']
+            if not hits:
+                break
+            all_hits.extend(hits)
+        
+        # Collect all results
+        search_resdf = pd.DataFrame([doc['_source'] for doc in all_hits])
+        return search_resdf
+    
+    def scroll_all_data_from_a_profile(self, PROFILE_NAME):
+        query = {
+            "query": {
+                "match_all": {}
+            }
+        }
+        # Initialize the scroll
+        response = self.es.search(index=PROFILE_NAME, body=query, scroll='2m', size=1000)
+        scroll_id = response['_scroll_id']
+        all_hits = response['hits']['hits']
+        
+        # Scroll through the results
+        while True:
+            response = self.es.scroll(scroll_id=scroll_id, scroll='2m')
+            hits = response['hits']['hits']
+            if not hits:
+                break
+            all_hits.extend(hits)
+        
+        # Collect all results
+        indexdf = pd.DataFrame([doc['_source'] for doc in all_hits])
+        return indexdf
     ##### FIX ME: perhaps we should use the library elasticsearch_dsl instead?
     # see https://elasticsearch-dsl.readthedocs.io/en/latest/
     # and https://stackoverflow.com/questions/53729753/how-to-get-all-results-from-elasticsearch-in-python

@@ -1,0 +1,79 @@
+import pandas as pd
+import os 
+import pathlib 
+import glob
+from datetime import datetime
+from tqdm import tqdm
+
+from dotenv import load_dotenv
+from elasticsearch import Elasticsearch
+
+import minio
+from minio.error import S3Error
+from minio.commonconfig import ENABLED
+from minio.versioningconfig import VersioningConfig
+
+from RDSBucket_class import *
+from data_profiles import *
+
+import warnings
+warnings.filterwarnings("ignore")
+
+import streamlit as st 
+
+minio_credential = "credentials.macstudio.json"
+es_credential = "es_credential.json"
+
+donwloaddir = "./examples/download"
+os.system("mkdir  -p {}".format(donwloaddir))
+
+##### generate the connection to minio
+with open(minio_credential, 'r') as file:
+            keys = json.load(file)
+        
+minio_client = minio.Minio(
+            endpoint="localhost:9411",
+            access_key=keys["accessKey"],
+            secret_key=keys["secretKey"],
+            secure=False 
+        )
+all_buckets = [bucket.name for bucket in minio_client.list_buckets()]
+
+##### generate the connection to Elasticsearch
+es = ESearch(es_credential = es_credential)
+all_indices = [item for item in es.es.indices.get_alias(index="*") if "." not in item]
+
+
+st.header("Search and Query")
+
+# Define search index
+search_indices = st.selectbox(
+    'Select an index',
+    (all_indices))
+
+# Define search query as JSON input
+search_query_json = st.text_area("Enter the search query in JSON format:")
+
+# Parse the JSON input
+try:
+    search_query = json.loads(search_query_json)
+except json.JSONDecodeError:
+    st.error("Invalid JSON format. Please correct the input.")
+    search_query = None
+
+# Get the search results if the query is valid
+if search_query:
+    search_res = es.search_scroll(search_indices=search_indices, search_query=search_query)
+    true_false_df = pd.DataFrame(data = [False for item in range(search_res.shape[0])], columns = ["select"])
+    search_res = pd.concat([search_res, true_false_df], axis = 1)
+    
+    if search_res.shape[0] != 0:
+        st.title("Search Results")
+        st.data_editor(
+            search_res,
+            disabled=["widgets"],
+            hide_index=True,
+        )
+
+    else:
+        st.write("No results found.")

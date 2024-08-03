@@ -10,7 +10,7 @@ export KIBANA_PASSWORD="genov4.cool"
 
 outputdir=/Users/hieunguyen/data/rds;
 
-docker_local_dir=${outputdir}/elastic
+docker_local_dir=${outputdir}/elastic_savedir
 MINIO_VOLUMES=${outputdir}/minio
 
 mkdir -p $docker_local_dir
