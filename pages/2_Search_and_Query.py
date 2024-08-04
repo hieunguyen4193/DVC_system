@@ -21,6 +21,9 @@ import warnings
 warnings.filterwarnings("ignore")
 
 import streamlit as st 
+st.set_page_config(
+    layout = "wide"
+)
 
 minio_credential = "credentials.macstudio.json"
 es_credential = "es_credential.json"
@@ -53,6 +56,25 @@ search_indices = st.selectbox(
     (all_indices))
 
 # Define search query as JSON input
+st.markdown(
+    """
+    See the "Query DSL" https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html 
+    documentation for more information on how to construct a query.
+    
+    Example search query: "match" all samples that have the "Labcode" ZLBE113NB
+    {
+    "query": {
+        "match": {
+        "Labcode": "ZLBE113NB"
+        }
+        }
+    } 
+    """
+    )
+st.markdown( 
+            """
+            
+            """)
 search_query_json = st.text_area("Enter the search query in JSON format:")
 
 # Parse the JSON input

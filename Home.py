@@ -24,6 +24,7 @@ import streamlit as st
 st.set_page_config(
     page_title="ECD Data Dashboard",
     page_icon="👋",
+    layout = "wide"
 )
 
 st.write("# Welcome to ECD data dashboard! 👋")
@@ -50,24 +51,29 @@ all_buckets = [bucket.name for bucket in minio_client.list_buckets()]
 es = ESearch(es_credential = es_credential)
 all_indices = [item for item in es.es.indices.get_alias(index="*") if "." not in item]
 
-tab1, tab2 = st.tabs([
+tab1, tab2, tab3 = st.tabs([
     "General information", 
-    "Data profiles"])
+    "Data profiles",
+    "All data in each data profile"])
 
 with tab1:
     st.markdown(
     """
     # ECD Data dashboard
-    
+
     ## Introduction
 
     ## Change log
 
+    ## GitHub repository
+    This application is under development. Feel free to contribute to the project by visiting the [GitHub repository](https://github.com/hieunguyen4193/DVC_system)
+    
     ## To-do
     """
     )
 
-with tab2:
+
+with tab3:
     st.header("All ECD datasets")
     selected_index = st.selectbox(
         'All available indices',

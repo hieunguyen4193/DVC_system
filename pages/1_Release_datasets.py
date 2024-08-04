@@ -5,7 +5,6 @@ import numpy as np
 st.set_page_config(page_title="Release datasets", page_icon="📈", layout = "wide")
 
 st.markdown("# Release datasets")
-st.sidebar.header("Release datasets")
 st.write(
     """This page contains pre-selected dataset for some ongoing ECD projects"""
 )
@@ -54,9 +53,11 @@ es = ESearch(es_credential = es_credential)
 all_indices = [item for item in es.es.indices.get_alias(index="*") if "." not in item]
 
 
-tab1, tab2 = st.tabs([
+tab1, tab2, tab3, tab4 = st.tabs([
     "WGS-hg19 dataset, CNA",
-    "WGBS-hg19-lowdepth dataset v0.1"
+    "WGBS-hg19-lowdepth dataset v0.1",
+    "WGBS-hg19-lowdepth dataset v0.2",
+    "WGS-hg19-image-datasets"    
 ])
 
 #####--------------------------------------------------------------------#####
