@@ -114,4 +114,4 @@ if search_query:
                 progress_bar.progress((i + 1) / total_files)
                 
                 # Print success message to Streamlit console
-            st.write(f"Dataset WGS_hg19 downloaded successfully.")
+            st.write(f"Query dataset downloaded successfully.")
