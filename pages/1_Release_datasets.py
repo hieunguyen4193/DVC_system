@@ -37,9 +37,6 @@ warnings.filterwarnings("ignore")
 minio_credential = "credentials.macstudio.json"
 es_credential = "es_credential.json"
 
-donwloaddir = "./examples/download"
-os.system("mkdir  -p {}".format(donwloaddir))
-
 ##### generate the connection to minio
 with open(minio_credential, 'r') as file:
             keys = json.load(file)
@@ -69,6 +66,11 @@ tab1, tab2 = st.tabs([
 with tab1:
     input_index = "wgsfeature"
     st.title("WGS-hg19 dataset")
+    st.markdown(
+    """
+    For any question, please contact hieunguyen@genesolutions.vn or hieutran@genesolutions.vn.   
+    """
+    )
     documents = es.scroll_all_data_from_a_profile(input_index)
     df = pd.DataFrame(documents)
     fulldf = df.copy()
@@ -80,7 +82,7 @@ with tab1:
     df = df[df["FeatureName"] == selected_feature]
     df = df.reset_index().drop("index", axis = 1)
     st.dataframe(df)
-    
+       
     st.download_button(
         label="Download feature metadata",
         data=convert_df(df),
@@ -92,10 +94,38 @@ with tab1:
         file_name="metadata_{}.WGS_hg19.csv".format(input_index),
         mime="text/csv")
     
-    # Add a text box
+    # Add a text box, input the path you want to download your data
     download_path = st.text_input('Path to download the feature (e.g: /home/hieunguyen/Downloads):')
-    st.write(f'Download path: {download_path}')
     
+    # click this button to download data from minio to your input path above
+    if st.button('Download data from MinIO'):
+        if download_path == "":
+            st.write("Please input the path to download the data")
+        else:
+            download_path = os.path.join(download_path, "WGS_hg19") 
+            os.system("mkdir -p {}".format(download_path))
+            
+            # Initialize progress bar
+            progress_bar = st.progress(0)
+            total_files = df.shape[0]
+            
+            for i in range(total_files):
+                bucketName = df.loc[i]["bucket"]
+                object_name = df.loc[i]["FileName"]
+                versionID = df.loc[i]["versionID"]
+
+                download_selected_file(minio_credential = minio_credential, 
+                                    bucketName = bucketName,
+                                    object_name = object_name, 
+                                    versionID = versionID, 
+                                    downloaddir = download_path)
+                
+                # Update progress bar
+                progress_bar.progress((i + 1) / total_files)
+                
+                # Print success message to Streamlit console
+            st.write(f"Dataset WGS_hg19 downloaded successfully.")
+
 #####--------------------------------------------------------------------#####
 ##### tab2: WGBS hg19 lowdepth dataset v0.1
 #####--------------------------------------------------------------------#####

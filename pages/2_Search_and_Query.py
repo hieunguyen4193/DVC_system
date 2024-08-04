@@ -84,3 +84,34 @@ if search_query:
         data=csv,
         file_name="searh_results.csv",
         mime="text/csv")
+    # Add a text box, input the path you want to download your data
+    download_path = st.text_input('Path to download the feature (e.g: /home/hieunguyen/Downloads):')
+    
+    # click this button to download data from minio to your input path above
+    if st.button('Download data from MinIO'):
+        if download_path == "":
+            st.write("Please input the path to download the data")
+        else:
+            download_path = os.path.join(download_path, "query_dataset_{}".format(datetime.now().strftime("%Y%m%d_%H%M%S"))) 
+            os.system("mkdir -p {}".format(download_path))
+            
+            # Initialize progress bar
+            progress_bar = st.progress(0)
+            total_files = search_res.shape[0]
+            
+            for i in range(total_files):
+                bucketName = search_res.loc[i]["bucket"]
+                object_name = search_res.loc[i]["FileName"]
+                versionID = search_res.loc[i]["versionID"]
+
+                download_selected_file(minio_credential = minio_credential, 
+                                    bucketName = bucketName,
+                                    object_name = object_name, 
+                                    versionID = versionID, 
+                                    downloaddir = download_path)
+                
+                # Update progress bar
+                progress_bar.progress((i + 1) / total_files)
+                
+                # Print success message to Streamlit console
+            st.write(f"Dataset WGS_hg19 downloaded successfully.")

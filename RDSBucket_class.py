@@ -300,7 +300,8 @@ def download_selected_file(minio_credential, bucketName, object_name, versionID,
         secure=False 
     )
     try:
-        file_path = os.path.join(downloaddir, object_name)
+        os.system("mkdir -p {}".format(downloaddir))
+        file_path = os.path.join(downloaddir, object_name)        
         minio_client.fget_object(bucket_name = bucketName, 
                                  object_name = object_name, 
                                  file_path = file_path, 
