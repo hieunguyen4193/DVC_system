@@ -72,8 +72,8 @@ tab1, tab2, tab3, tab4 = st.tabs([
 with tab1:
     st.header("Release dataset")
     subtab1, subtab2 = st.tabs([
-    "WGS-hg19 dataset",
-    "WGBS-hg19-CNA dataset"
+        "WGS-hg19 dataset",
+        "WGBS-hg19-CNA dataset"
     ])
 with subtab1:
     input_index = "wgsfeature"

@@ -15,6 +15,7 @@ from minio.versioningconfig import VersioningConfig
 
 from RDSBucket_class import *
 from data_profiles import *
+from st_helper_functions import *
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -74,6 +75,12 @@ if search_query:
             disabled=["widgets"],
             hide_index=True,
         )
-
     else:
         st.write("No results found.")
+    
+    csv = convert_df(search_res)
+    st.download_button(
+        label="Download metadata",
+        data=csv,
+        file_name="searh_results.csv",
+        mime="text/csv")
